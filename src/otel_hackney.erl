@@ -84,7 +84,7 @@ request(Tracer, Method, URL, Headers0, Body, Options) ->
         %% passing SpanCtx directly ensures that this `end_span' ends the span started
         %% in this function. If spans in `Fun()' were started and not finished properly
         %% they will be abandoned and it be up to the `otel_span_sweeper' to eventually remove them.
-        _ = otel_span_ets:end_span(SpanCtx),
+        _ = otel_span:end_span(SpanCtx),
         otel_ctx:attach(Ctx)
     end.
 
