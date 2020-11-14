@@ -1,11 +1,12 @@
 {application, opentelemetry_hackney,
- [{description, "An OTP application"},
-  {vsn, "0.1.0"},
+ [{description, "OpenTelemetry instrumented wrapper for Hackney"},
+  {vsn, "git"},
   {registered, []},
   {mod, {opentelemetry_hackney_app, []}},
   {applications,
    [kernel,
-    stdlib
+    stdlib,
+    opentelemetry_api
    ]},
   {env,[]},
   {modules, []},
