@@ -12,7 +12,8 @@ The default Span name used in the above example will be `HTTP GET`. You can pass
 custom Span name or a function that is passed the HTTP method and the full url
 of the request and returns a Span name:
 
-```
+```erlang
+SpanNameFun = fun(_Method, _Url) -> <<"/hello/{who}">> end,
 {ok, 200, _, _} = otel_hackney:request(get, "http://localhost:3000/hello/otel", [],
-                                       <<>>, [{span_name, fun(_Method, _Url) -> <<"/hello/{who}">> end}])
+                                       <<>>, [{span_name, SpanNameFun}])
 ```
